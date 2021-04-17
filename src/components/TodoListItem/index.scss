@@ -3,6 +3,20 @@
     justify-content: space-between;
     align-items: center;
 
+    &__label {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .important {
+        color: rgb(230, 53, 53);
+    }
+
+    .done {
+        text-decoration: line-through;
+    }
+
     .btn {
         width: 2.5rem;
         height: 2.5rem;

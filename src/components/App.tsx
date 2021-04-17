@@ -27,7 +27,7 @@ const todosData = [
       important: false,
     },
     {
-      label: 'Go to Cinema',
+      label: 'Go to the Cinema',
       important: true,
     },
   ]

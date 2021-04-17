@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import "./index.scss";
 
-const TodoListItem = ({ label, important }: any) => {
+const TodoListItem = ({ label}: any) => {
   const [done, setDone] = useState(false);
+  const [important, setImportant] = useState(false);
+  
   let spanClasses = "todo-list-item__label";
 
   if (important) spanClasses += " important";
   if (done) spanClasses += " done";
+
   const labelClickHandler = () => {
       setDone(!done);
   };
+  const infoClickHandler = () => {
+    setImportant(!important);
+};
 
   return (
     <div className="todo-list-item">
@@ -21,7 +27,7 @@ const TodoListItem = ({ label, important }: any) => {
         <button className="btn btn-danger">
           <i className="fas fa-trash"></i>
         </button>
-        <button className="btn btn-info">
+        <button onClick={infoClickHandler} className="btn btn-info">
           <i className="fas fa-info"></i>
         </button>
       </div>

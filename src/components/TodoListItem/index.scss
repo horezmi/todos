@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
     &__label {
         &:hover {
             cursor: pointer;
@@ -10,6 +9,7 @@
     }
     .important {
         color: rgb(230, 53, 53);
+        font-weight: 500;
     }
     .done {
         text-decoration: line-through;

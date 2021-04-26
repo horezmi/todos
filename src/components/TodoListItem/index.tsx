@@ -28,7 +28,7 @@ const TodoListItem = ({ label}: any) => {
           <i className="fas fa-trash"></i>
         </button>
         <button onClick={infoClickHandler} className="btn btn-info">
-          <i className="fas fa-info"></i>
+          <i className="fas fa-exclamation"></i>
         </button>
       </div>
     </div>

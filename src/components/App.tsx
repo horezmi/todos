@@ -5,6 +5,7 @@ import Header from "./Header";
 import SearchPanel from "./SearchPanel";
 import TodoList from "./TodoList";
 import FilterButtons from "./FilterButtons";
+import TodoListItemForm from "./TodoListItemForm";
 
 import "./App.scss";
 
@@ -33,9 +34,22 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(todosData);
+  const [value, setValue] = useState('');
 
-  const handleDelete = (id: any) => {
-    setTodos(() => todos.filter((elem) => elem.id !== id))
+  const handleDeleteItem = (id: any) => {
+    setTodos(() => todos.filter((todo) => todo.id !== id))
+  };
+  const handleAddItem = () => {
+    const newItem = {
+      id: nanoid(),
+      label: value,
+      important: true,
+    }
+    setTodos(() => todos.concat(newItem))
+    setValue('');
+  };
+  const handleChangeItem = (event : any) => {
+    setValue(event.target.value);
   };
 
   return (
@@ -49,9 +63,16 @@ function App() {
           <FilterButtons />
         </div>
         <div className="main__todos">
-          <TodoList 
-            onDelete={handleDelete}
-            todos={todos} 
+          <TodoList
+            todos={todos}
+            onDelete={handleDeleteItem}
+          />
+        </div>
+        <div className="main__add-item">
+          <TodoListItemForm
+            value={value}
+            onClick={handleAddItem}
+            onChange={handleChangeItem}
           />
         </div>
       </div>

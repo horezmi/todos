@@ -43,7 +43,7 @@ function App() {
     const newItem = {
       id: nanoid(),
       label: value,
-      important: true,
+      important: false,
     }
     setTodos(() => todos.concat(newItem))
     setValue('');

@@ -51,7 +51,7 @@ function App() {
         <div className="main__todos">
           <TodoList 
             onDelete={handleDelete}
-            todos={todosData} 
+            todos={todos} 
           />
         </div>
       </div>

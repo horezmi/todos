@@ -55,6 +55,9 @@ function App() {
     }))
   };
 
+  let doneCount = todos.filter(todo => todo.done).length;
+  let activeCount = todos.length - doneCount;
+
   return (
     <div className="App">
       <div className="header">
@@ -62,7 +65,10 @@ function App() {
       </div>
       <div className="main">
         <div className="main__item-status-counters">
-          <ItemStatusCounters />
+          <ItemStatusCounters 
+            doneCount={doneCount}
+            activeCount={activeCount}
+          />
         </div>
         <div className="main__search-filter">
           <SearchPanel />

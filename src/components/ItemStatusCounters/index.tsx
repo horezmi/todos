@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.scss' 
 
-const ItemStatusCounters = () => {
+const ItemStatusCounters = ({ activeCount, doneCount } : any) => {
     return (
         <div className="item-status-counters">
-            <span>1 active</span>
-            /
-            <span>5 done</span>
+            <span>{activeCount} active</span>
+            <br />
+            <span>{doneCount} done</span>
         </div>
     )
 }

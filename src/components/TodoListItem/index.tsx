@@ -1,38 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.scss";
 
-const TodoListItem = ({ label, id, onDelete }: any) => {
-  const [done, setDone] = useState(false);
-  const [important, setImportant] = useState(false);
-
+const TodoListItem = ({ label, id, important, done,
+                        onDelete, onToggleDone, onToggleImportant }: any) => {
   let spanClasses = "todo-list-item__label";
 
   if (important) spanClasses += " important";
   if (done) spanClasses += " done";
 
-  const labelClickHandler = () => {
-    setDone(() => !done);
-  };
-  const infoClickHandler = () => {
-    setImportant(() => !important);
-  };
-
   return (
     <div className="todo-list-item">
-      <span onClick={labelClickHandler} className={spanClasses}>
+      <span 
+        className={spanClasses}
+        onClick={() => onToggleDone(id)}
+      >
         {label}
       </span>
 
       <div className="todo-list-item__btns">
         <button 
-          onClick={() => onDelete(id)}
           className="btn btn-danger"
+          onClick={() => onDelete(id)}
         >
           <i className="fas fa-trash"></i>
         </button>
         <button 
-          onClick={infoClickHandler} 
           className="btn btn-info"
+          onClick={() => onToggleImportant(id)}
         >
           <i className="fas fa-exclamation"></i>
         </button>

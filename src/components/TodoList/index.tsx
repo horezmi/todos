@@ -2,7 +2,7 @@ import React from 'react'
 import TodoListItem from '../TodoListItem/index'
 import './index.scss'
 
-const TodoList = ({todos, onDelete} : any) => {
+const TodoList = ({todos, onDelete, onToggleDone, onToggleImportant} : any) => {
     const lists : any = todos.map( (todo : any) => {
         return (
             <li 
@@ -12,6 +12,8 @@ const TodoList = ({todos, onDelete} : any) => {
                 <TodoListItem 
                     {...todo}
                     onDelete={onDelete}
+                    onToggleDone={onToggleDone}
+                    onToggleImportant={onToggleImportant}
                 />
             </li>
         );

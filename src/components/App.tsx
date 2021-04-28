@@ -6,50 +6,53 @@ import SearchPanel from "./SearchPanel";
 import TodoList from "./TodoList";
 import FilterButtons from "./FilterButtons";
 import TodoListItemForm from "./TodoListItemForm";
+import ItemStatusCounters from "./ItemStatusCounters";
 
 import "./App.scss";
 
 function App() {
+  const createItem = (label : any) => {
+    return {
+      id: nanoid(),
+      label,
+      important: false,
+      done: false,
+    }
+  };
+
   let todosData = [
-    {
-      id: nanoid(),
-      label: "Learn React",
-      important: true,
-    },
-    {
-      id: nanoid(),
-      label: "Create an App",
-      important: false,
-    },
-    {
-      id: nanoid(),
-      label: "Drink Coffee",
-      important: false,
-    },
-    {
-      id: nanoid(),
-      label: "Go to the Cinema",
-      important: true,
-    },
+    createItem("Learn React"),
+    createItem("Create an App"),
+    createItem("Drink Coffee"),
+    createItem("Go to the Cinema"),
   ];
 
   const [todos, setTodos] = useState(todosData);
   const [value, setValue] = useState('');
 
   const handleDeleteItem = (id: any) => {
-    setTodos(() => todos.filter((todo) => todo.id !== id))
+    setTodos(todos.filter((todo) => todo.id !== id))
   };
   const handleAddItem = () => {
-    const newItem = {
-      id: nanoid(),
-      label: value,
-      important: false,
-    }
-    setTodos(() => todos.concat(newItem))
+    setTodos(todos.concat(createItem(value)));
     setValue('');
   };
   const handleChangeItem = (event : any) => {
     setValue(event.target.value);
+  };
+  const onToggleDone = (id : any) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) 
+        todo.done = !todo.done
+      return todo
+    }))
+  };
+  const onToggleImportant = (id : any) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) 
+        todo.important = !todo.important
+      return todo
+    }))
   };
 
   return (
@@ -58,6 +61,9 @@ function App() {
         <Header />
       </div>
       <div className="main">
+        <div className="main__item-status-counters">
+          <ItemStatusCounters />
+        </div>
         <div className="main__search-filter">
           <SearchPanel />
           <FilterButtons />
@@ -66,6 +72,8 @@ function App() {
           <TodoList
             todos={todos}
             onDelete={handleDeleteItem}
+            onToggleImportant={onToggleImportant}
+            onToggleDone={onToggleDone}
           />
         </div>
         <div className="main__add-item">

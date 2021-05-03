@@ -9,11 +9,7 @@ const TodoList = ({todos} : any) => {
                 key={'id' + todo.id}
                 className="list-group-item todo-list__li"
             >
-                <TodoListItem 
-                    {...todo}
-                    // onToggleDone={onToggleDone}
-                    // onToggleImportant={onToggleImportant}
-                />
+                <TodoListItem {...todo} />
             </li>
         );
     });

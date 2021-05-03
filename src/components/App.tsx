@@ -32,9 +32,9 @@ function App() {
   const handleDeleteItem = (id: any) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
-  const handleAddItem = (title : any) => {
+  const handleAddItem = (title: any) => {
     setTodos(todos.concat(createItem(title)));
-  }
+  };
   const onToggleDone = (id: any) => {
     setTodos(
       todos.map((todo) => {
@@ -52,48 +52,48 @@ function App() {
     );
   };
   const handleFilterAll = () => {
-    console.log('todosAll')
+    console.log("todosAll");
   };
   const handleFilterActive = () => {
-    console.log('todosAll')  
+    console.log("todosAll");
   };
   const handleFilterDone = () => {
-    console.log('todosAll')
+    console.log("todosAll");
   };
 
   let doneCount = todos.filter((todo) => todo.done).length;
   let activeCount = todos.length - doneCount;
 
   return (
-    <Context.Provider 
-      value={ {handleDeleteItem, onToggleDone, onToggleImportant} }>
+    <Context.Provider
+      value={{ handleDeleteItem, onToggleDone, onToggleImportant }}
+    >
       <div className="App">
         <div className="header">
           <Header />
         </div>
         <div className="main">
-        <div className="main__item-status-counters">
-          <ItemStatusCounters doneCount={doneCount} activeCount={activeCount} />
+          <div className="main__item-status-counters">
+            <ItemStatusCounters
+              doneCount={doneCount}
+              activeCount={activeCount}
+            />
+          </div>
+          <div className="main__search-filter">
+            <SearchPanel />
+            <FilterButtons
+              onAll={handleFilterAll}
+              onActive={handleFilterActive}
+              onDone={handleFilterDone}
+            />
+          </div>
+          <div className="main__todos">
+            {todos.length > 0 ? <TodoList todos={todos} /> : <p>No todo</p>}
+          </div>
+          <div className="main__add-item">
+            <TodoListItemForm onCreate={handleAddItem} />
+          </div>
         </div>
-        <div className="main__search-filter">
-          <SearchPanel />
-          <FilterButtons
-            onAll={handleFilterAll}
-            onActive={handleFilterActive}
-            onDone={handleFilterDone}
-          />
-        </div>
-        <div className="main__todos">
-          <TodoList
-            todos={todos}
-          />
-        </div>
-        <div className="main__add-item">
-          <TodoListItemForm
-            onCreate={handleAddItem}
-          />
-        </div>
-      </div>
       </div>
     </Context.Provider>
   );

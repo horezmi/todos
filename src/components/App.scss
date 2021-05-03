@@ -1,19 +1,19 @@
 .App {
-    font-size: 1;
-    margin: 3rem auto;
-    width: 35rem;
-    height: auto;
-    .main {
-        padding: 1rem;
-        border: 5px white solid;
-        border-radius: 1rem;
-        background-color: #eee;
-        &__search-filter {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 3rem;
-            padding: 0.25rem 0;
-        }
+  font-size: 1;
+  margin: 3rem auto;
+  width: 35rem;
+  height: auto;
+  .main {
+    padding: 1rem;
+    border: 5px white solid;
+    border-radius: 1rem;
+    background-color: #eee;
+    &__search-filter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 3rem;
+      padding: 0.25rem 0;
     }
+  }
 }

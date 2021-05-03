@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import Context from "../../helpers/context";
 import "./index.scss";
 
 const TodoListItem = ({ label, id, important, done,
-                        onDelete, onToggleDone, onToggleImportant }: any) => {
+                        onToggleDone, onToggleImportant }: any) => {
+  const { handleDeleteItem } = useContext(Context);
   let spanClasses = "todo-list-item__label";
 
   if (important) spanClasses += " important";
@@ -20,7 +22,7 @@ const TodoListItem = ({ label, id, important, done,
       <div className="todo-list-item__btns">
         <button 
           className="btn btn-danger"
-          onClick={() => onDelete(id)}
+          onClick={() => handleDeleteItem(id)}
         >
           <i className="fas fa-trash"></i>
         </button>

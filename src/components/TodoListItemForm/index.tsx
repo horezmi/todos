@@ -9,7 +9,8 @@ const TodoListItemForm = ({ onCreate } : any) => {
     };
     const onSubmit = (e: any) => {
         e.preventDefault();
-        onCreate(value);
+        if (value.trim())
+            onCreate(value);
         setValue("");
       };
     return (

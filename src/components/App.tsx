@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
+import Context from "../helpers/context";
+import "./App.scss";
 
 import Header from "./Header";
 import SearchPanel from "./SearchPanel";
@@ -7,8 +9,6 @@ import TodoList from "./TodoList";
 import FilterButtons from "./FilterButtons";
 import TodoListItemForm from "./TodoListItemForm";
 import ItemStatusCounters from "./ItemStatusCounters";
-
-import "./App.scss";
 
 function App() {
   const createItem = (label: any) => {
@@ -65,11 +65,12 @@ function App() {
   let activeCount = todos.length - doneCount;
 
   return (
-    <div className="App">
-      <div className="header">
-        <Header />
-      </div>
-      <div className="main">
+    <Context.Provider value={{handleDeleteItem}}>
+      <div className="App">
+        <div className="header">
+          <Header />
+        </div>
+        <div className="main">
         <div className="main__item-status-counters">
           <ItemStatusCounters doneCount={doneCount} activeCount={activeCount} />
         </div>
@@ -84,7 +85,7 @@ function App() {
         <div className="main__todos">
           <TodoList
             todos={todos}
-            onDelete={handleDeleteItem}
+            // onDelete={handleDeleteItem}
             onToggleImportant={onToggleImportant}
             onToggleDone={onToggleDone}
           />
@@ -95,7 +96,8 @@ function App() {
           />
         </div>
       </div>
-    </div>
+      </div>
+    </Context.Provider>
   );
 }
 

@@ -88,9 +88,13 @@ function App() {
             />
           </div>
           <div className="main__todos">
-            {todos.length > 0 ? <TodoList todos={todos} /> : <p>No todo</p>}
+            {todos.length > 0 ? (
+              <TodoList todos={todos} />
+            ) : (
+              <p>No todos. Add it via the form below.</p>
+            )}
           </div>
-          <div className="main__add-item">
+          <div className="main__add-item-form">
             <TodoListItemForm onCreate={handleAddItem} />
           </div>
         </div>

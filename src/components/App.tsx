@@ -85,7 +85,7 @@ function App() {
         <div className="main__add-item">
           <TodoListItemForm
             value={value}
-            onClick={handleAddItem}
+            onSubmit={handleAddItem}
             onChange={handleChangeItem}
           />
         </div>

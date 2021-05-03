@@ -1,13 +1,28 @@
 import React from 'react'
 import './index.scss'
 
-const FilterButtons = () => {
+const FilterButtons = ({ onAll, onActive, onDone } : any) => {
     return (
         <div className="filter-buttons">
             <div className="filter-buttons__btns">
-                <button className="filter-buttons__btn btn">All</button>
-                <button className="filter-buttons__btn btn">Active</button>
-                <button className="filter-buttons__btn btn">Done</button>
+                <button 
+                    className="filter-buttons__btn btn"
+                    onClick={onAll}
+                >   
+                    All
+                </button>
+                <button 
+                    className="filter-buttons__btn btn"
+                    onClick={onActive}
+                >   
+                    Active
+                </button>
+                <button 
+                    className="filter-buttons__btn btn"
+                    onClick={onDone}
+                >   
+                    Done
+                </button>
             </div>
         </div>
     )

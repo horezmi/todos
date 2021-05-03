@@ -11,13 +11,13 @@ import ItemStatusCounters from "./ItemStatusCounters";
 import "./App.scss";
 
 function App() {
-  const createItem = (label : any) => {
+  const createItem = (label: any) => {
     return {
       id: nanoid(),
       label,
       important: false,
       done: false,
-    }
+    };
   };
 
   let todosData = [
@@ -28,34 +28,40 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(todosData);
-  const [value, setValue] = useState('');
 
   const handleDeleteItem = (id: any) => {
-    setTodos(todos.filter((todo) => todo.id !== id))
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
-  const handleAddItem = () => {
-    setTodos(todos.concat(createItem(value)));
-    setValue('');
+  const handleAddItem = (title : any) => {
+    setTodos(todos.concat(createItem(title)));
+  }
+  const onToggleDone = (id: any) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) todo.done = !todo.done;
+        return todo;
+      })
+    );
   };
-  const handleChangeItem = (event : any) => {
-    setValue(event.target.value);
+  const onToggleImportant = (id: any) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) todo.important = !todo.important;
+        return todo;
+      })
+    );
   };
-  const onToggleDone = (id : any) => {
-    setTodos(todos.map(todo => {
-      if (todo.id === id) 
-        todo.done = !todo.done
-      return todo
-    }))
+  const handleFilterAll = () => {
+    console.log('todosAll')
   };
-  const onToggleImportant = (id : any) => {
-    setTodos(todos.map(todo => {
-      if (todo.id === id) 
-        todo.important = !todo.important
-      return todo
-    }))
+  const handleFilterActive = () => {
+    console.log('todosAll')  
+  };
+  const handleFilterDone = () => {
+    console.log('todosAll')
   };
 
-  let doneCount = todos.filter(todo => todo.done).length;
+  let doneCount = todos.filter((todo) => todo.done).length;
   let activeCount = todos.length - doneCount;
 
   return (
@@ -65,14 +71,15 @@ function App() {
       </div>
       <div className="main">
         <div className="main__item-status-counters">
-          <ItemStatusCounters 
-            doneCount={doneCount}
-            activeCount={activeCount}
-          />
+          <ItemStatusCounters doneCount={doneCount} activeCount={activeCount} />
         </div>
         <div className="main__search-filter">
           <SearchPanel />
-          <FilterButtons />
+          <FilterButtons
+            onAll={handleFilterAll}
+            onActive={handleFilterActive}
+            onDone={handleFilterDone}
+          />
         </div>
         <div className="main__todos">
           <TodoList
@@ -84,9 +91,7 @@ function App() {
         </div>
         <div className="main__add-item">
           <TodoListItemForm
-            value={value}
-            onSubmit={handleAddItem}
-            onChange={handleChangeItem}
+            onCreate={handleAddItem}
           />
         </div>
       </div>

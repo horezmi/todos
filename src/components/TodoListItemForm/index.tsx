@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './index.scss'
 
-const TodoListItemForm = ({ value, onSubmit, onChange } : any) => {
+const TodoListItemForm = ({ onCreate } : any) => {
+    const [value, setValue] = useState("");
+    const handleChangeItem = ({ target }: any) => {
+        setValue(target.value);
+    };
+    const onSubmit = (e: any) => {
+        e.preventDefault();
+        onCreate(value);
+        setValue("");
+      };
     return (
         <form 
             className="todo-list-item-form"
@@ -14,7 +23,7 @@ const TodoListItemForm = ({ value, onSubmit, onChange } : any) => {
                         className="form-control-sm"
                         type="text" 
                         value={value}
-                        onChange={onChange}
+                        onChange={handleChangeItem}
                     />
                 </div>
             </div>

@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import Context from "../../helpers/context";
 import "./index.scss";
 
-const TodoListItem = ({ label, id, important, done,
-                        onToggleDone, onToggleImportant }: any) => {
-  const { handleDeleteItem } = useContext(Context);
+const TodoListItem = ({ label, id, important, done }: any) => {
+  const { handleDeleteItem, 
+          onToggleImportant,  
+          onToggleDone } = useContext(Context);
   let spanClasses = "todo-list-item__label";
 
   if (important) spanClasses += " important";

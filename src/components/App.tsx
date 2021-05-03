@@ -65,7 +65,8 @@ function App() {
   let activeCount = todos.length - doneCount;
 
   return (
-    <Context.Provider value={{handleDeleteItem}}>
+    <Context.Provider 
+      value={ {handleDeleteItem, onToggleDone, onToggleImportant} }>
       <div className="App">
         <div className="header">
           <Header />
@@ -85,9 +86,6 @@ function App() {
         <div className="main__todos">
           <TodoList
             todos={todos}
-            // onDelete={handleDeleteItem}
-            onToggleImportant={onToggleImportant}
-            onToggleDone={onToggleDone}
           />
         </div>
         <div className="main__add-item">

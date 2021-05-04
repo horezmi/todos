@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoListItem from '../TodoListItem/index'
+
 import './index.scss'
 
 const TodoList = ({todos} : any) => {

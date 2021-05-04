@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../../helpers/context";
+
 import "./index.scss";
 
 const TodoListItem = ({ label, id, important, done }: any) => {

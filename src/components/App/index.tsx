@@ -64,15 +64,17 @@ function App() {
   const handleSearch = (item: String) => {
     setSearchItem(item);
   };
-  const filter = (todos : any, item : any) => {
-    if (item === 'all') return todos;
-    else if (item === 'active') return todos.filter((todo: { done: any; }) => todo.done)
-    else if (item === 'done') return todos.filter((todo: { done: any; }) => !todo.done)
+  const filter = (todos: any, item: any) => {
+    if (item === "all") return todos;
+    else if (item === "active")
+      return todos.filter((todo: { done: any }) => todo.done);
+    else if (item === "done")
+      return todos.filter((todo: { done: any }) => !todo.done);
     else return todos;
-  }
-  const handleFilter = (item : any) => {
+  };
+  const handleFilter = (item: any) => {
     setFilterItem(item);
-  }
+  };
   const showTodos = () => {
     const visibleTodos = filter(search(todos, searchItem), filterItem);
     return visibleTodos.length > 0 ? (
@@ -81,14 +83,15 @@ function App() {
       <p>No todos. Add it via the form below.</p>
     );
   };
+  const handleEdit = () => {console.log('dqwdq')}
 
   const visibleT = filter(search(todos, searchItem), filterItem);
-  let doneCount = visibleT.filter((todo: { done: any; }) => todo.done).length;
+  let doneCount = visibleT.filter((todo: { done: any }) => todo.done).length;
   let activeCount = visibleT.length - doneCount;
 
   return (
     <Context.Provider
-      value={{ handleDeleteItem, onToggleDone, onToggleImportant }}
+      value={{ handleDeleteItem, onToggleDone, onToggleImportant, handleEdit }}
     >
       <div className="App">
         <div className="header">
@@ -103,7 +106,7 @@ function App() {
           </div>
           <div className="main__search-filter">
             <SearchPanel onSearch={handleSearch} />
-            <FilterButtons onFilter={handleFilter}/>
+            <FilterButtons onFilter={handleFilter} />
           </div>
           <div className="main__todos">{showTodos()}</div>
           <div className="main__add-item-form">

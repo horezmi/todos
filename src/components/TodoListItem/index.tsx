@@ -6,7 +6,8 @@ import "./index.scss";
 const TodoListItem = ({ label, id, important, done }: any) => {
   const { handleDeleteItem, 
           onToggleImportant,  
-          onToggleDone } = useContext(Context);
+          onToggleDone,
+          handleEdit } = useContext(Context);
   let spanClasses = "todo-list-item__label";
 
   if (important) spanClasses += " important";
@@ -22,6 +23,12 @@ const TodoListItem = ({ label, id, important, done }: any) => {
       </span>
 
       <div className="todo-list-item__btns">
+        <button 
+          className="btn btn-success"
+          onClick={() => handleEdit()}
+        >
+          <i className="fas fa-edit"></i>
+        </button>
         <button 
           className="btn btn-danger"
           onClick={() => handleDeleteItem(id)}

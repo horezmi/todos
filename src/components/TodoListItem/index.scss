@@ -1,22 +1,27 @@
 .todo-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &__label {
-        &:hover {
-            cursor: pointer;
-        }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__label {
+    white-space: wrap;
+    flex: 4;
+    &:hover {
+      cursor: pointer;
     }
-    .important {
-        color: rgb(230, 53, 53);
-        font-weight: 500;
-    }
-    .done {
-        text-decoration: line-through;
-    }
-    .btn {
-        width: 2.5rem;
-        height: 2.5rem;
-        margin: 0 0.1rem;
-    }
+  }
+  &__btn {
+      flex: 2;
+  }
+  .important {
+    color: rgb(230, 53, 53);
+    font-weight: 500;
+  }
+  .done {
+    text-decoration: line-through;
+  }
+  .btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 0.1rem;
+  }
 }

@@ -69,7 +69,7 @@ const App = () => {
       <p>No todos. Add it via the form below.</p>
     );
   };
-  const handleEdit = (editedLabel: any, id: any) => {
+  const handleEditItem = (editedLabel: any, id: any) => {
     const updated = todos.map((todo) => {
       if (todo.id === id) todo.label = editedLabel;
       return todo;
@@ -83,7 +83,7 @@ const App = () => {
 
   return (
     <Context.Provider
-      value={{ handleDeleteItem, onToggleDone, onToggleImportant, handleEdit }}
+      value={{ handleDeleteItem, handleEditItem, onToggleDone, onToggleImportant }}
     >
       <div className="App">
         <div className="header">

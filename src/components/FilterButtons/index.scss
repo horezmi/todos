@@ -1,4 +1,7 @@
 .filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  
   &__btn {
     outline: none;
     border: 1px #f5df4d solid;

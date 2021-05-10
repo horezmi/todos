@@ -22,9 +22,7 @@ const FilterButtons = ({ onFilter }: any) => {
 
   return (
     <div className="filter-buttons">
-      <div className="filter-buttons__btns">
-        {filterButtons}
-      </div>
+      {filterButtons}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import TodoListItem from "../TodoListItem/index";
+import TodoListItem from "components/TodoListItem";
 
 import "./index.scss";
 

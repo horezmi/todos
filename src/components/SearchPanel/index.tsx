@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useInputValue from "../../helpers/useInputValue";
+import useInputValue from "helpers/useInputValue";
 
 import "./index.scss";
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import Context from "../../helpers/context";
-import useInputValue from "../../helpers/useInputValue";
+import Context from "helpers/context";
+import useInputValue from "helpers/useInputValue";
 
 import "./index.scss";
 
@@ -26,7 +26,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     }
   };
 
-  let spanClasses = "todo-list-item__label";
+  let spanClasses = "todo-list-item__label-span";
   if (important) spanClasses += " important";
   if (done) spanClasses += " done";
 
@@ -35,12 +35,14 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   };
   const showItem = () => {
     return !onEdit ? (
-      <span className={spanClasses} onClick={() => onToggleDone(id)}>
-        {label}
-      </span>
+      <div className="todo-list-item__label-wrap">
+        <span className={spanClasses} onClick={() => onToggleDone(id)}>
+          {label}
+        </span>
+      </div>
     ) : (
       <form onSubmit={onSubmit}>
-        <input className="form-control-sm" type="text" {...bindValue} />
+        <input className="form-control-sm" type="text" {...bindValue} autoFocus />
       </form>
     );
   };

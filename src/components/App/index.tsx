@@ -53,9 +53,6 @@ function App() {
     });
     setTodos(updated);
   };
-  const handleSearch = (item: String) => {
-    setSearchItem(item);
-  };
   const search = (todos: any, label: any) => {
     if (!label) return todos;
 
@@ -63,11 +60,20 @@ function App() {
       return todo.label.toLowerCase().indexOf(label.toLowerCase()) > -1;
     });
   };
+  const handleSearch = (item: String) => {
+    setSearchItem(item);
+  };
+  const showTodos = () => {
+    const visibleTodos = search(todos, searchItem);
+    return visibleTodos.length > 0 ? (
+      <TodoList todos={visibleTodos} />
+    ) : (
+      <p>No todos. Add it via the form below.</p>
+    );
+  };
 
   let doneCount = todos.filter((todo) => todo.done).length;
   let activeCount = todos.length - doneCount;
-
-  const visibleTodos = search(todos, searchItem);
 
   return (
     <Context.Provider
@@ -88,13 +94,7 @@ function App() {
             <SearchPanel onSearch={handleSearch} />
             <FilterButtons />
           </div>
-          <div className="main__todos">
-            {visibleTodos.length > 0 ? (
-              <TodoList todos={visibleTodos} />
-            ) : (
-              <p>No todos. Add it via the form below.</p>
-            )}
-          </div>
+          <div className="main__todos">{showTodos()}</div>
           <div className="main__add-item-form">
             <TodoListItemForm onCreate={handleAddItem} />
           </div>

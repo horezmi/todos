@@ -8,7 +8,7 @@ const SearchPanel = ({ onSearch }: any) => {
 
   const value = bindValue.value;
   
-  useEffect(() => onSearch(value));
+  useEffect(() => onSearch(value), [onSearch, value]);
   
   return (
     <div className="search-panel">

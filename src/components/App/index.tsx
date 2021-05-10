@@ -11,7 +11,7 @@ import FilterButtons from "../FilterButtons";
 import TodoListItemForm from "../TodoListItemForm";
 import ItemStatusCounters from "../ItemStatusCounters";
 
-function App() {
+const  App = () => {
   const createItem = (label: any) => {
     return {
       id: nanoid(),

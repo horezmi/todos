@@ -5,6 +5,7 @@ import "./index.scss";
 
 const TodoListItemForm = ({ onCreate }: any) => {
   const { bindValue, clearValue, takeValue } = useInputValue("");
+  
   const onSubmit = (event: any) => {
     event.preventDefault();
     if (takeValue().trim()) {

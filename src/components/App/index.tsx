@@ -83,13 +83,13 @@ function App() {
       <p>No todos. Add it via the form below.</p>
     );
   };
-  const handleEdit = (editedLabel : any, id : any) => {
+  const handleEdit = (editedLabel: any, id: any) => {
     const updated = todos.map((todo) => {
       if (todo.id === id) todo.label = editedLabel;
       return todo;
     });
     setTodos(updated);
-  }
+  };
 
   const visibleT = filter(search(todos, searchItem), filterItem);
   let doneCount = visibleT.filter((todo: { done: any }) => todo.done).length;

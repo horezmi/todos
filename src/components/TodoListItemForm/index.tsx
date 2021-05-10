@@ -1,19 +1,9 @@
 import React, { useState } from "react";
+import useInputValue from "../../helpers/useInputValue";
 
 import "./index.scss";
 
 const TodoListItemForm = ({ onCreate }: any) => {
-  const useInputValue = (defaultValue = "") => {
-    const [value, setValue] = useState(defaultValue);
-    return {
-      bindValue: {
-        value,
-        onChange: ({ target }: any) => setValue(target.value),
-      },
-      clearValue: () => setValue(""),
-      takeValue: () => value,
-    };
-  };
   const { bindValue, clearValue, takeValue } = useInputValue("");
   const onSubmit = (event: any) => {
     event.preventDefault();

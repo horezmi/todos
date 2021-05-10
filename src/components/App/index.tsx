@@ -51,11 +51,11 @@ const App = () => {
     setSearchItem(item);
   };
   const filter = (todos: any, item: any) => {
-    if (item === "all") return todos;
-    else if (item === "active")
-      return todos.filter((todo: { done: any }) => todo.done);
-    else if (item === "done")
+    if (item === "All") return todos;
+    else if (item === "Active")
       return todos.filter((todo: { done: any }) => !todo.done);
+    else if (item === "Done")
+      return todos.filter((todo: { done: any }) => todo.done);
     else return todos;
   };
   const handleFilter = (item: string) => {

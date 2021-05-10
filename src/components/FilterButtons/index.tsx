@@ -1,28 +1,29 @@
 import React from "react";
+
 import "./index.scss";
 
 const FilterButtons = ({ onFilter }: any) => {
+  const handleFilter = (item : string) => () => onFilter(item);
+
+  const buttonsName = [
+    'All', 'Active', 'Done'
+  ];
+
+  const filterButtons = buttonsName.map(btn => {
+    return (
+      <button
+        className="filter-buttons__btn btn"
+        onClick={handleFilter(btn)}
+      >
+        {btn}
+      </button>
+    )
+  })
+
   return (
     <div className="filter-buttons">
       <div className="filter-buttons__btns">
-        <button
-          className="filter-buttons__btn btn"
-          onClick={() => onFilter("all")}
-        >
-          All
-        </button>
-        <button
-          className="filter-buttons__btn btn"
-          onClick={() => onFilter("done")}
-        >
-          Active
-        </button>
-        <button
-          className="filter-buttons__btn btn"
-          onClick={() => onFilter("active")}
-        >
-          Done
-        </button>
+        {filterButtons}
       </div>
     </div>
   );

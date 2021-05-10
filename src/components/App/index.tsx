@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Context from "../../helpers/context";
 
-import "./App.scss";
+import "./index.scss";
 
 import Header from "../Header";
 import SearchPanel from "../SearchPanel";
@@ -57,8 +57,7 @@ function App() {
     });
     updateFilteredTodos(updated);
   };
-
-  const filter = (name : String) => {
+  const handleFilter = (name : String) => {
     switch(name) {
       case "all":
         return setfilteredTodos(todos);
@@ -94,7 +93,7 @@ function App() {
               // onSearch={handleSearch}
             />
             <FilterButtons
-              onFilter={filter}
+              onFilter={handleFilter}
             />
           </div>
           <div className="main__todos">

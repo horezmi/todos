@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import Context from "../../helpers/context";
+import Context from "helpers/context";
 
 import "./index.scss";
 
-import Header from "../Header";
-import SearchPanel from "../SearchPanel";
-import TodoList from "../TodoList";
-import FilterButtons from "../FilterButtons";
-import TodoListItemForm from "../TodoListItemForm";
-import ItemStatusCounters from "../ItemStatusCounters";
+import {
+  Header,
+  SearchPanel,
+  TodoList,
+  FilterButtons,
+  TodoListItemForm,
+  ItemStatusCounters,
+} from "helpers/importComponents";
 
-const  App = () => {
+const App = () => {
   const createItem = (label: any) => {
     return {
       id: nanoid(),
@@ -122,6 +124,6 @@ const  App = () => {
       </div>
     </Context.Provider>
   );
-}
+};
 
 export default App;

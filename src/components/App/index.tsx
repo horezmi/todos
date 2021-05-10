@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { nanoid } from "nanoid";
 import Context from "helpers/context";
+import { createItem, todosData } from "helpers/defaultTodosData"
 
 import "./index.scss";
 
@@ -14,43 +14,27 @@ import {
 } from "helpers/importComponents";
 
 const App = () => {
-  const createItem = (label: any) => {
-    return {
-      id: nanoid(),
-      label,
-      important: false,
-      done: false,
-    };
-  };
-
-  let todosData = [
-    createItem("Learn React"),
-    createItem("Create an App"),
-    createItem("Drink Coffee"),
-    createItem("Go to the Cinema"),
-  ];
-
   const [todos, setTodos] = useState(todosData);
   const [searchItem, setSearchItem] = useState<String>("");
   const [filterItem, setFilterItem] = useState<String>("all");
 
-  const handleDeleteItem = (id: any) => {
-    const updated = todos.filter((todo) => todo.id !== id);
+  const handleDeleteItem = (todoId: string) => {
+    const updated = todos.filter(({ id }) => id !== todoId);
     setTodos(updated);
   };
-  const handleAddItem = (title: any) => {
+  const handleAddItem = (title: string) => {
     const updated = todos.concat(createItem(title));
     setTodos(updated);
   };
-  const onToggleDone = (id: any) => {
-    const updated = todos.map((todo) => {
+  const onToggleDone = (id: string) => {
+    const updated = todos.map(todo => {
       if (todo.id === id) todo.done = !todo.done;
       return todo;
     });
     setTodos(updated);
   };
-  const onToggleImportant = (id: any) => {
-    const updated = todos.map((todo) => {
+  const onToggleImportant = (id: string) => {
+    const updated = todos.map(todo => {
       if (todo.id === id) todo.important = !todo.important;
       return todo;
     });
@@ -63,7 +47,7 @@ const App = () => {
       return todo.label.toLowerCase().indexOf(label.toLowerCase()) > -1;
     });
   };
-  const handleSearch = (item: String) => {
+  const handleSearch = (item: string) => {
     setSearchItem(item);
   };
   const filter = (todos: any, item: any) => {
@@ -74,7 +58,7 @@ const App = () => {
       return todos.filter((todo: { done: any }) => !todo.done);
     else return todos;
   };
-  const handleFilter = (item: any) => {
+  const handleFilter = (item: string) => {
     setFilterItem(item);
   };
   const showTodos = () => {
@@ -94,8 +78,8 @@ const App = () => {
   };
 
   const visibleT = filter(search(todos, searchItem), filterItem);
-  let doneCount = visibleT.filter((todo: { done: any }) => todo.done).length;
-  let activeCount = visibleT.length - doneCount;
+  const doneCount = visibleT.filter((todo: { done: any }) => todo.done).length;
+  const activeCount = visibleT.length - doneCount;
 
   return (
     <Context.Provider

@@ -22,6 +22,7 @@ const TodoListItemForm = ({ onCreate }: any) => {
       clearValue();
     }
   };
+
   return (
     <form className="todo-list-item-form" onSubmit={onSubmit}>
       <div className="todo-list-item-form__input">

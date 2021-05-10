@@ -29,49 +29,45 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(todosData);
-  const [filteredTodos, setfilteredTodos] = useState(todos);
+  const [searchItem, setSearchItem] = useState<String>("");
 
-  const updateFilteredTodos = (updated : any) => {
-    setTodos(updated);
-    setfilteredTodos(updated);
-  }
   const handleDeleteItem = (id: any) => {
-    const updated = todos.filter(todo => todo.id !== id);
-    updateFilteredTodos(updated);
+    const updated = todos.filter((todo) => todo.id !== id);
+    setTodos(updated);
   };
   const handleAddItem = (title: any) => {
-    const updated = todos.concat(createItem(title))
-    updateFilteredTodos(updated);
+    const updated = todos.concat(createItem(title));
+    setTodos(updated);
   };
   const onToggleDone = (id: any) => {
     const updated = todos.map((todo) => {
       if (todo.id === id) todo.done = !todo.done;
       return todo;
     });
-    updateFilteredTodos(updated);
+    setTodos(updated);
   };
   const onToggleImportant = (id: any) => {
     const updated = todos.map((todo) => {
       if (todo.id === id) todo.important = !todo.important;
       return todo;
     });
-    updateFilteredTodos(updated);
+    setTodos(updated);
   };
-  const handleFilter = (name : String) => {
-    switch(name) {
-      case "all":
-        return setfilteredTodos(todos);
-      case 'done':
-        return setfilteredTodos(todos.filter(todo => !todo.done));
-      case 'active':
-        return setfilteredTodos(todos.filter(todo => todo.done));
-      default :
-        return setfilteredTodos(todos);
-    }
-  }
+  const handleSearch = (item: String) => {
+    setSearchItem(item);
+  };
+  const search = (todos: any, label: any) => {
+    if (!label) return todos;
 
-  let doneCount = filteredTodos.filter((todo) => todo.done).length;
-  let activeCount = filteredTodos.length - doneCount;
+    return todos.filter((todo: { label: string | any }) => {
+      return todo.label.toLowerCase().indexOf(label.toLowerCase()) > -1;
+    });
+  };
+
+  let doneCount = todos.filter((todo) => todo.done).length;
+  let activeCount = todos.length - doneCount;
+
+  const visibleTodos = search(todos, searchItem);
 
   return (
     <Context.Provider
@@ -89,16 +85,12 @@ function App() {
             />
           </div>
           <div className="main__search-filter">
-            <SearchPanel 
-              // onSearch={handleSearch}
-            />
-            <FilterButtons
-              onFilter={handleFilter}
-            />
+            <SearchPanel onSearch={handleSearch} />
+            <FilterButtons />
           </div>
           <div className="main__todos">
-            {todos.length > 0 ? (
-              <TodoList todos={filteredTodos} />
+            {visibleTodos.length > 0 ? (
+              <TodoList todos={visibleTodos} />
             ) : (
               <p>No todos. Add it via the form below.</p>
             )}

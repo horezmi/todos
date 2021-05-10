@@ -4,12 +4,14 @@ import useInputValue from "../../helpers/useInputValue";
 import "./index.scss";
 
 const TodoListItemForm = ({ onCreate }: any) => {
-  const { bindValue, clearValue, takeValue } = useInputValue("");
+  const { bindValue, clearValue } = useInputValue("");
   
+  const value = bindValue.value.trim();
+
   const onSubmit = (event: any) => {
     event.preventDefault();
-    if (takeValue().trim()) {
-      onCreate(takeValue());
+    if (value) {
+      onCreate(value);
       clearValue();
     }
   };

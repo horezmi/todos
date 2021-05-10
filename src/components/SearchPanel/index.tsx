@@ -4,9 +4,11 @@ import useInputValue from "../../helpers/useInputValue";
 import "./index.scss";
 
 const SearchPanel = ({ onSearch }: any) => {
-  const { bindValue, takeValue } = useInputValue("");
+  const { bindValue } = useInputValue("");
 
-  useEffect(() => onSearch(takeValue()));
+  const value = bindValue.value;
+  
+  useEffect(() => onSearch(value));
   
   return (
     <div className="search-panel">

@@ -11,13 +11,16 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     onToggleDone,
     handleEdit,
   } = useContext(Context);
-  const [onEdit, setOnEdit] = useState(false);
-  const { bindValue, clearValue, takeValue } = useInputValue(label);
 
+  const [onEdit, setOnEdit] = useState(false);
+  const { bindValue, clearValue } = useInputValue(label);
+
+  const value = bindValue.value.trim();
+  
   const onSubmit = (event: any) => {
     event.preventDefault();
-    if (takeValue().trim()) {
-      handleEdit(takeValue(), id);
+    if (value) {
+      handleEdit(value, id);
       clearValue();
       setOnEdit(false);
     }
@@ -47,7 +50,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
       {showItem()}
 
       <div className="todo-list-item__btns">
-        <button className="btn btn-success" onClick={() => onClick()}>
+        <button className="btn btn-success" onClick={onClick}>
           <i className="fas fa-edit"></i>
         </button>
         <button className="btn btn-danger" onClick={() => handleDeleteItem(id)}>

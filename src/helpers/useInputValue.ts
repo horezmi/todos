@@ -8,7 +8,6 @@ const useInputValue = (defaultValue = "") => {
       onChange: ({ target }: any) => setValue(target.value),
     },
     clearValue: () => setValue(""),
-    takeValue: () => value,
   };
 };
 

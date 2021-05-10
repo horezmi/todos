@@ -30,6 +30,7 @@ function App() {
 
   const [todos, setTodos] = useState(todosData);
   const [searchItem, setSearchItem] = useState<String>("");
+  const [filterItem, setFilterItem] = useState<String>("all");
 
   const handleDeleteItem = (id: any) => {
     const updated = todos.filter((todo) => todo.id !== id);
@@ -63,8 +64,17 @@ function App() {
   const handleSearch = (item: String) => {
     setSearchItem(item);
   };
+  const filter = (todos : any, item : any) => {
+    if (item === 'all') return todos;
+    else if (item === 'active') return todos.filter((todo: { done: any; }) => todo.done)
+    else if (item === 'done') return todos.filter((todo: { done: any; }) => !todo.done)
+    else return todos;
+  }
+  const handleFilter = (item : any) => {
+    setFilterItem(item);
+  }
   const showTodos = () => {
-    const visibleTodos = search(todos, searchItem);
+    const visibleTodos = filter(search(todos, searchItem), filterItem);
     return visibleTodos.length > 0 ? (
       <TodoList todos={visibleTodos} />
     ) : (
@@ -72,8 +82,9 @@ function App() {
     );
   };
 
-  let doneCount = todos.filter((todo) => todo.done).length;
-  let activeCount = todos.length - doneCount;
+  const visibleT = filter(search(todos, searchItem), filterItem);
+  let doneCount = visibleT.filter((todo: { done: any; }) => todo.done).length;
+  let activeCount = visibleT.length - doneCount;
 
   return (
     <Context.Provider
@@ -92,7 +103,7 @@ function App() {
           </div>
           <div className="main__search-filter">
             <SearchPanel onSearch={handleSearch} />
-            <FilterButtons />
+            <FilterButtons onFilter={handleFilter}/>
           </div>
           <div className="main__todos">{showTodos()}</div>
           <div className="main__add-item-form">

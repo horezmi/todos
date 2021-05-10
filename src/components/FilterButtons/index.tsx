@@ -7,19 +7,19 @@ const FilterButtons = ({ onFilter } : any) => {
             <div className="filter-buttons__btns">
                 <button 
                     className="filter-buttons__btn btn"
-                    // onClick={() => onFilter('all')}
+                    onClick={() => onFilter('all')}
                 >   
                     All
                 </button>
                 <button 
                     className="filter-buttons__btn btn"
-                    // onClick={() => onFilter('done')}
+                    onClick={() => onFilter('done')}
                 >   
                     Active
                 </button>
                 <button 
                     className="filter-buttons__btn btn"
-                    // onClick={() => onFilter('active')}
+                    onClick={() => onFilter('active')}
                 >   
                     Done
                 </button>

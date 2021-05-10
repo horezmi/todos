@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import "./index.scss";
 
 const SearchPanel = ({ onSearch } : any) => {
-//   const [value, setValue] = useState("");
-//   const handleChange = ({ target } : any) => {
-//     setValue(target.value.trim());
-//     onSearch(value);
-//   };
+
   return (
     <div className="search-panel">
       <div className="input-group">

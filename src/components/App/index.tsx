@@ -57,25 +57,17 @@ function App() {
     });
     updateFilteredTodos(updated);
   };
-  // const handleSearch = (value : any) => {
-  //   if (value) {
-  //     const label = value.trim();
-  //     console.log(label);
-  //     const updated = filteredTodos.filter(todo => todo.label === label);
-  //     setfilteredTodos(updated);
-  //   }
-  // }
+
   const filter = (name : String) => {
     switch(name) {
       case "all":
-        setfilteredTodos(todos);
-        break;
+        return setfilteredTodos(todos);
       case 'done':
-        setfilteredTodos(todos.filter(todo => !todo.done));
-        break;
+        return setfilteredTodos(todos.filter(todo => !todo.done));
       case 'active':
-        setfilteredTodos(todos.filter(todo => todo.done));
-        break;
+        return setfilteredTodos(todos.filter(todo => todo.done));
+      default :
+        return setfilteredTodos(todos);
     }
   }
 

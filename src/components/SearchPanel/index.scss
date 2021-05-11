@@ -1,8 +1,9 @@
 .search-panel {
   .form-control-sm {
-    width: 15rem;
+    max-width: 10rem;
     outline: none;
     border: 1px #f5df4d solid;
+    
     &:focus {
       border: 2px #f5df4d solid;
     }

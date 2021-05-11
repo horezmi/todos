@@ -7,13 +7,18 @@ const SearchPanel = ({ onSearch }: any) => {
   const { bindValue } = useInputValue("");
 
   const value = bindValue.value;
-  
+
   useEffect(() => onSearch(value), [onSearch, value]);
-  
+
   return (
     <div className="search-panel">
       <div className="input-group">
-        <input className="form-control-sm" type="text" {...bindValue} />
+        <input
+          className="form-control-sm"
+          type="text"
+          {...bindValue}
+          placeholder="Search"
+        />
       </div>
     </div>
   );

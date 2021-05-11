@@ -9,7 +9,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     handleDeleteItem,
     onToggleImportant,
     onToggleDone,
-    handleEdit,
+    handleEditItem,
   } = useContext(Context);
 
   const [onEdit, setOnEdit] = useState(false);
@@ -20,7 +20,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   const onSubmit = (event: any) => {
     event.preventDefault();
     if (value) {
-      handleEdit(value, id);
+      handleEditItem(value, id);
       clearValue();
       setOnEdit(false);
     }

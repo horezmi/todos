@@ -9,7 +9,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   const { handleDeleteItem, onToggleImportant, onToggleDone, handleEditItem } =
     useContext(Context);
 
-  const [onEdit, setOnEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const { bindValue, clearValue } = useInputValue(label);
 
   const value = bindValue.value.trim();
@@ -19,7 +19,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     if (value) {
       handleEditItem(value, id);
       clearValue();
-      setOnEdit(false);
+      setIsEdit(false);
     }
   };
 
@@ -29,13 +29,15 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     done,
   });
 
-  const onClick = () => {
-    setOnEdit(() => !onEdit);
-  };
+  const onEdit = () => setIsEdit(() => !isEdit);
+  const onDelete = (id: string) => () => handleDeleteItem(id);
+  const onDone = (id: string) => () => onToggleDone(id);
+  const onImportant = (id: string) => () => onToggleImportant(id);
+
   const showItem = () => {
-    return !onEdit ? (
+    return !isEdit ? (
       <div className="todo-list-item__label-wrap">
-        <span className={spanClasses} onClick={() => onToggleDone(id)}>
+        <span className={spanClasses} onClick={onDone(id)}>
           {label}
         </span>
       </div>
@@ -55,13 +57,13 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     <div className="todo-list-item">
       {showItem()}
       <div className="todo-list-item__btns">
-        <button className="btn btn-success" onClick={onClick}>
+        <button className="btn btn-success" onClick={onEdit}>
           <i className="fas fa-edit"></i>
         </button>
-        <button className="btn btn-danger" onClick={() => handleDeleteItem(id)}>
+        <button className="btn btn-danger" onClick={onDelete(id)}>
           <i className="fas fa-trash"></i>
         </button>
-        <button className="btn btn-info" onClick={() => onToggleImportant(id)}>
+        <button className="btn btn-info" onClick={onImportant(id)}>
           <i className="fas fa-exclamation"></i>
         </button>
       </div>

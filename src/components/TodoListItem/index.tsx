@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import Context from "helpers/context";
+import classNames from "classnames";
 import useInputValue from "helpers/useInputValue";
 
 import "./index.scss";
@@ -22,9 +23,11 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     }
   };
 
-  let spanClasses = "todo-list-item__label-span";
-  if (important) spanClasses += " important";
-  if (done) spanClasses += " done";
+  const spanClasses = classNames({
+    "todo-list-item__label-span": true,
+    important,
+    done,
+  });
 
   const onClick = () => {
     setOnEdit(() => !onEdit);

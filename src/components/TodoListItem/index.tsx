@@ -29,7 +29,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     done,
   });
 
-  const onEdit = () => setIsEdit(() => !isEdit);
+  const onEdit = () => setIsEdit((s) => !s);
   const onDelete = (id: string) => () => handleDeleteItem(id);
   const onDone = (id: string) => () => onToggleDone(id);
   const onImportant = (id: string) => () => onToggleImportant(id);

@@ -29,7 +29,6 @@ const App = () => {
   };
   const handleAddItem = (title: string) => {
     const updated = todos.concat(createItem(title));
-
     setTodos(updated);
   };
   const onToggleDone = (id: string) => {

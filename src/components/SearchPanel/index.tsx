@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import useInputValue from "helpers/useInputValue";
+import React, { useEffect } from 'react';
+import useInputValue from 'helpers/useInputValue';
 
-import "./index.scss";
+import './index.scss';
 
 const SearchPanel = ({ onSearch }: any) => {
-  const { bindValue } = useInputValue("");
+  const { bindValue } = useInputValue('');
 
-  const value = bindValue.value;
+  const { value } = bindValue;
 
   useEffect(() => onSearch(value), [onSearch, value]);
 

@@ -1,10 +1,10 @@
-import React from "react";
-import useInputValue from "helpers/useInputValue";
+import React from 'react';
+import useInputValue from 'helpers/useInputValue';
 
-import "./index.scss";
+import './index.scss';
 
 const TodoListItemForm = ({ onCreate }: any) => {
-  const { bindValue, clearValue } = useInputValue("");
+  const { bindValue, clearValue } = useInputValue('');
 
   const value = bindValue.value.trim();
 

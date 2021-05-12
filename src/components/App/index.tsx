@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Context from "helpers/context";
-import { createItem, todosData } from "helpers/defaultTodosData";
-import { getTodosFromStorage, setTodosToStorage } from "helpers/localStorage";
+import React, { useState, useEffect } from 'react';
+import Context from 'helpers/context';
+import { createItem, todosData } from 'helpers/defaultTodosData';
+import { getTodosFromStorage, setTodosToStorage } from 'helpers/localStorage';
 
-import "./index.scss";
+import './index.scss';
 
 import {
   Header,
@@ -12,12 +12,12 @@ import {
   FilterButtons,
   TodoListItemForm,
   ItemStatusCounters,
-} from "helpers/importComponents";
+} from 'helpers/importComponents';
 
 const App = () => {
   const [todos, setTodos] = useState(getTodosFromStorage() || todosData);
-  const [searchItem, setSearchItem] = useState<String>("");
-  const [filterItem, setFilterItem] = useState<String>("all");
+  const [searchItem, setSearchItem] = useState<String>('');
+  const [filterItem, setFilterItem] = useState<String>('all');
 
   useEffect(() => {
     setTodosToStorage(todos);
@@ -48,20 +48,22 @@ const App = () => {
   const search = (todos: any, label: any) => {
     if (!label) return todos;
 
-    return todos.filter((todo: { label: string | any }) => {
-      return todo.label.toLowerCase().indexOf(label.toLowerCase()) > -1;
-    });
+    return todos.filter(
+      (todo: { label: string | any }) => todo.label.toLowerCase().indexOf(label.toLowerCase()) > -1
+    );
   };
   const handleSearch = (item: string) => {
     setSearchItem(item);
   };
   const filter = (todos: any, item: any) => {
-    if (item === "All") return todos;
-    else if (item === "Active")
+    if (item === 'All') return todos;
+    if (item === 'Active') {
       return todos.filter((todo: { done: any }) => !todo.done);
-    else if (item === "Done")
+    }
+    if (item === 'Done') {
       return todos.filter((todo: { done: any }) => todo.done);
-    else return todos;
+    }
+    return todos;
   };
   const handleFilter = (item: string) => {
     setFilterItem(item);

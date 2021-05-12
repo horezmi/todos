@@ -3,16 +3,19 @@
   justify-content: space-between;
 
   margin-top: 1rem;
+
   &__input {
     .form-control-sm {
       width: 15rem;
       outline: none;
       border: 1px #f5df4d solid;
+      
       &:focus {
         border: 2px #f5df4d solid;
       }
     }
   }
+  
   &__btn {
     width: 6rem;
     background-color: #f5df4d;

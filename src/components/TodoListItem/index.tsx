@@ -5,18 +5,14 @@ import useInputValue from "helpers/useInputValue";
 import "./index.scss";
 
 const TodoListItem = ({ label, id, important, done }: any) => {
-  const {
-    handleDeleteItem,
-    onToggleImportant,
-    onToggleDone,
-    handleEditItem,
-  } = useContext(Context);
+  const { handleDeleteItem, onToggleImportant, onToggleDone, handleEditItem } =
+    useContext(Context);
 
   const [onEdit, setOnEdit] = useState(false);
   const { bindValue, clearValue } = useInputValue(label);
 
   const value = bindValue.value.trim();
-  
+
   const onSubmit = (event: any) => {
     event.preventDefault();
     if (value) {
@@ -42,7 +38,12 @@ const TodoListItem = ({ label, id, important, done }: any) => {
       </div>
     ) : (
       <form onSubmit={onSubmit}>
-        <input className="form-control-sm" type="text" {...bindValue} autoFocus />
+        <input
+          className="form-control-sm"
+          type="text"
+          {...bindValue}
+          autoFocus
+        />
       </form>
     );
   };
@@ -50,7 +51,6 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   return (
     <div className="todo-list-item">
       {showItem()}
-
       <div className="todo-list-item__btns">
         <button className="btn btn-success" onClick={onClick}>
           <i className="fas fa-edit"></i>

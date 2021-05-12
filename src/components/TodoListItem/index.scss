@@ -2,15 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &__label-wrap {
     flex: 4;
   }
+  
   &__label-span {
     white-space: wrap;
+    
     &:hover {
       cursor: pointer;
     }
   }
+ 
   &__btn {
     flex: 2;
   }

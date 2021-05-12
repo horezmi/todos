@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Context from "helpers/context";
-import { createItem, todosData, getTodosFromStorage } from "helpers/defaultTodosData";
+import { createItem, todosData } from "helpers/defaultTodosData";
+import { getTodosFromStorage, setTodosToStorage } from "helpers/localStorage";
 
 import "./index.scss";
 
@@ -19,11 +20,11 @@ const App = () => {
   const [filterItem, setFilterItem] = useState<String>("all");
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    setTodosToStorage(todos);
   }, [todos]);
 
   const handleDeleteItem = (todoId: string) => {
-    const updated = todos.filter(({ id } : any) => id !== todoId);
+    const updated = todos.filter(({ id }: any) => id !== todoId);
     setTodos(updated);
   };
   const handleAddItem = (title: string) => {
@@ -32,14 +33,14 @@ const App = () => {
     setTodos(updated);
   };
   const onToggleDone = (id: string) => {
-    const updated = todos.map((todo : any) => {
+    const updated = todos.map((todo: any) => {
       if (todo.id === id) todo.done = !todo.done;
       return todo;
     });
     setTodos(updated);
   };
   const onToggleImportant = (id: string) => {
-    const updated = todos.map((todo : any) => {
+    const updated = todos.map((todo: any) => {
       if (todo.id === id) todo.important = !todo.important;
       return todo;
     });
@@ -75,7 +76,7 @@ const App = () => {
     );
   };
   const handleEditItem = (editedLabel: any, id: any) => {
-    const updated = todos.map((todo : any) => {
+    const updated = todos.map((todo: any) => {
       if (todo.id === id) todo.label = editedLabel;
       return todo;
     });

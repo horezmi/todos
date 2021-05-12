@@ -15,9 +15,3 @@ export const todosData = [
   createItem("Drink Coffee"),
   createItem("Go to the Cinema"),
 ];
-
-export const getTodosFromStorage = () => {
-  const data : string | any = localStorage.getItem('todos');
-  const todos = JSON.parse(data);
-  return todos;
-}

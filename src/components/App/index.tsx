@@ -3,8 +3,6 @@ import todosAppContext from 'helpers/Context';
 import { createItem, todosData } from 'helpers/defaultTodosData';
 import { getTodosFromStorage, setTodosToStorage } from 'helpers/LocalStorage';
 
-import './index.scss';
-
 import {
   Header,
   SearchPanel,
@@ -13,6 +11,8 @@ import {
   TodoListItemForm,
   ItemStatusCounters,
 } from 'components';
+
+import './index.scss';
 
 const App = () => {
   const [todos, setTodos] = useState(getTodosFromStorage() || todosData);

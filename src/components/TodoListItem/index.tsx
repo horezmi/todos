@@ -27,18 +27,22 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   const onDone = (id: string) => () => onToggleDone(id);
   const onImportant = (id: string) => () => onToggleImportant(id);
 
-  const showItem = () =>
-    isEdit ? (
-      <form onSubmit={onSubmit}>
-        <input className="form-control-sm" type="text" {...bindValue} autoFocus />
-      </form>
-    ) : (
-      <div className="todo-list-item__label-wrap">
-        <span className={cn({ 'todo-list-item__label-span': true, important, done })} onClick={onDone(id)}>
-          {label}
-        </span>
-      </div>
-    );
+  const showItem = () => (isEdit ? (
+    <form onSubmit={onSubmit}>
+      <input className="form-control-sm" type="text" {...bindValue} autoFocus />
+    </form>
+  ) : (
+    <div className="todo-list-item__label-wrap">
+      <span
+        className={
+          cn({ 'todo-list-item__label-span': true, important, done })
+        }
+        onClick={onDone(id)}
+      >
+        {label}
+      </span>
+    </div>
+  ));
 
   return (
     <div className="todo-list-item">

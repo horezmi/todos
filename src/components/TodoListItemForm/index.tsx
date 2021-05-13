@@ -1,5 +1,5 @@
 import React from 'react';
-import useInputValue from 'helpers/useInputValue';
+import useInputValue from 'helpers/Hooks/useInputValue';
 
 import './index.scss';
 

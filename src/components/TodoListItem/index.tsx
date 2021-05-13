@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import Context from 'helpers/context';
+import Context from 'helpers/Context';
 import classNames from 'classnames';
-import useInputValue from 'helpers/useInputValue';
+import useInputValue from 'helpers/Hooks/useInputValue';
 
 import './index.scss';
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Context from 'helpers/context';
+import todosAppContext from 'helpers/Context';
 import { createItem, todosData } from 'helpers/defaultTodosData';
-import { getTodosFromStorage, setTodosToStorage } from 'helpers/localStorage';
+import { getTodosFromStorage, setTodosToStorage } from 'helpers/LocalStorage';
 
 import './index.scss';
 
@@ -12,7 +12,7 @@ import {
   FilterButtons,
   TodoListItemForm,
   ItemStatusCounters,
-} from 'helpers/importComponents';
+} from 'components';
 
 const App = () => {
   const [todos, setTodos] = useState(getTodosFromStorage() || todosData);
@@ -89,7 +89,7 @@ const App = () => {
   const activeCount = visibleT.length - doneCount;
 
   return (
-    <Context.Provider
+    <todosAppContext.Provider
       value={{
         handleDeleteItem,
         handleEditItem,
@@ -118,7 +118,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </Context.Provider>
+    </todosAppContext.Provider>
   );
 };
 

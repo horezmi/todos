@@ -9,7 +9,7 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   const { handleDeleteItem, onToggleImportant, onToggleDone, handleEditItem } = useContext(Context);
 
   const [isEdit, setIsEdit] = useState(false);
-  const { bindValue, clearValue } = useInputValue(label);
+  const { bindValue } = useInputValue(label);
 
   const { value } = bindValue;
   value.trim();
@@ -17,7 +17,6 @@ const TodoListItem = ({ label, id, important, done }: any) => {
   const updateValue = (value : string) => {
     if (value) {
       handleEditItem(value, id);
-      clearValue();
       setIsEdit(false);
     }
   };

@@ -7,12 +7,12 @@ const FilterButtons = ({ onFilter }: any) => {
   const handleFilter = (item: string) => () => onFilter(item);
 
   return (
-    <div className="filter-buttons">
+    <div className="filter-buttons d-flex">
       {
       FILTER_BUTTONS_NAME.map((btn) => (
         <button
           key={`id${nanoid()}`}
-          className="filter-buttons__btn btn"
+          className="filter-buttons__btn btn p-2"
           onClick={handleFilter(btn)}
         >
           {btn}

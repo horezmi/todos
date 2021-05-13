@@ -1,14 +1,7 @@
 .filter-buttons {
-  display: flex;
-  justify-content: space-between;
-  
-  &__btn {
-    flex: 1;
+   &__btn {
     outline: none;
     border: 1px #f5df4d solid;
     margin: 0 0.1rem;
-  }
-  .btn {
-    max-width: 4.4rem;
   }
 }

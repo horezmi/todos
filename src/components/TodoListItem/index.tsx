@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Context from 'helpers/Context';
-import classNames from 'classnames';
+import cn from 'classnames';
 import useInputValue from 'helpers/Hooks/useInputValue';
 
 import './index.scss';
@@ -22,33 +22,23 @@ const TodoListItem = ({ label, id, important, done }: any) => {
     }
   };
 
-  const spanClasses = classNames({
-    'todo-list-item__label-span': true,
-    important,
-    done,
-  });
-
   const onEdit = () => setIsEdit((s) => !s);
   const onDelete = (id: string) => () => handleDeleteItem(id);
   const onDone = (id: string) => () => onToggleDone(id);
   const onImportant = (id: string) => () => onToggleImportant(id);
 
-  const showItem = () => (!isEdit ? (
-    <div className="todo-list-item__label-wrap">
-      <span className={spanClasses} onClick={onDone(id)}>
-        {label}
-      </span>
-    </div>
-  ) : (
-    <form onSubmit={onSubmit}>
-      <input
-        className="form-control-sm"
-        type="text"
-        {...bindValue}
-        autoFocus
-      />
-    </form>
-  ));
+  const showItem = () =>
+    isEdit ? (
+      <form onSubmit={onSubmit}>
+        <input className="form-control-sm" type="text" {...bindValue} autoFocus />
+      </form>
+    ) : (
+      <div className="todo-list-item__label-wrap">
+        <span className={cn({ 'todo-list-item__label-span': true, important, done })} onClick={onDone(id)}>
+          {label}
+        </span>
+      </div>
+    );
 
   return (
     <div className="todo-list-item">

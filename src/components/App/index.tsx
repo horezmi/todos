@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import todosAppContext from 'helpers/Context';
 import { createItem, todosData } from 'helpers/defaultTodosData';
 import { getTodosFromStorage, setTodosToStorage } from 'helpers/LocalStorage';
@@ -15,7 +15,7 @@ import {
 
 import './index.scss';
 
-const App = () => {
+const App: FC = () => {
   const [todos, setTodos] = useState<TodosType[]>(getTodosFromStorage() || todosData);
   const [searchItem, setSearchItem] = useState<string>('');
   const [filterItem, setFilterItem] = useState<string>('all');

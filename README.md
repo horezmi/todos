@@ -1,7 +1,9 @@
 [View Demo](http://easytodos.surge.sh) - Task Management Application using React.js
 
 React, TypeScript, Hooks, Custom hooks, Context, LocalStorage, nanoid
+
 Bootstrap 4, classnames, Scss, font-awesome
+
 Eslint, prettier, husky, lint-staged
 
 ## Available Scripts

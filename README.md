@@ -1,6 +1,8 @@
 [View Demo](http://easytodos.surge.sh)
 
-React, TypeScript, Hooks, Context
+React, TypeScript, Hooks, Custom hooks, Context, LocalStorage, nanoid
+Bootstrap 4, classnames, Scss, font-awesome
+Eslint, prettier, husky, lint-staged
 
 ## Available Scripts
 

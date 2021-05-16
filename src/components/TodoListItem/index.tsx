@@ -1,21 +1,22 @@
 import React, { useState, useContext } from 'react';
-import Context from 'helpers/Context';
+import todosAppContext from 'helpers/Context';
 import cn from 'classnames';
 import useInputValue from 'helpers/Hooks/useInputValue';
-import { TodosType } from 'types/interfaces';
+import { TodosType, todosAppContextType } from 'types/interfaces';
 
 import './index.scss';
 
 const TodoListItem = ({ label, id, important, done }: TodosType) => {
-  const { handleDeleteItem, onToggleImportant, onToggleDone, handleEditItem } = useContext(Context);
+  const { handleDeleteItem, onToggleImportant,
+    onToggleDone, handleEditItem } = useContext<todosAppContextType>(todosAppContext);
 
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
   const { bindValue } = useInputValue(label);
 
   const { value } = bindValue;
   value.trim();
 
-  const updateValue = (value : string) => {
+  const updateValue = (value: string) => {
     if (value) {
       handleEditItem(value, id);
       setIsEdit(false);
@@ -36,16 +37,19 @@ const TodoListItem = ({ label, id, important, done }: TodosType) => {
   const onDone = (id: string) => () => onToggleDone(id);
   const onImportant = (id: string) => () => onToggleImportant(id);
 
-  const showItem = () => (isEdit ? (
+  const showItem = (): JSX.Element => (isEdit ? (
     <form onSubmit={onSubmit}>
-      <input className="form-control-sm" type="text" {...bindValue} autoFocus />
+      <input
+        className="form-control-sm"
+        type="text"
+        {...bindValue}
+        autoFocus
+      />
     </form>
   ) : (
     <div className="todo-list-item__label-wrap">
       <span
-        className={
-          cn({ 'todo-list-item__label-span': true, important, done })
-        }
+        className={cn({ 'todo-list-item__label-span': true, important, done })}
         onClick={onDone(id)}
       >
         {label}

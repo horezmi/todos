@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const useInputValue = (defaultValue = '') => {
-  const [value, setValue] = useState(defaultValue);
+const useInputValue = (defaultValue: string = '') => {
+  const [value, setValue] = useState<string>(defaultValue);
   return {
     bindValue: {
       value,

@@ -6,9 +6,7 @@ import { SearchPanelPropsType } from 'types/interfaces';
 
 const SearchPanel = ({ onSearch }: SearchPanelPropsType) => {
   const { bindValue } = useInputValue('');
-
   const { value } = bindValue;
-
   useEffect(() => onSearch(value), [onSearch, value]);
 
   return (

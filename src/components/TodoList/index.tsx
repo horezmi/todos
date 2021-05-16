@@ -6,7 +6,10 @@ import './index.scss';
 
 const TodoList = ({ todos }: {todos: TodosType[]}) => {
   const lists = todos.map((todo) => (
-    <li key={`id${todo.id}`} className="list-group-item todo-list__li">
+    <li
+      className="list-group-item todo-list__li"
+      key={`id${todo.id}`}
+    >
       <TodoListItem {...todo} />
     </li>
   ));

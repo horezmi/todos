@@ -14,3 +14,6 @@ In the project directory, you can run:
 ### `yarn test`
 ### `yarn build`
 ### `yarn eject`
+### `yarn lint`
+### `yarn lint:fix`
+### `yarn format`

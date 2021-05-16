@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { TodosType } from 'types/interfaces';
 
-export const createItem = (label: any): TodosType => ({
+export const createItem = (label: string): TodosType => ({
   id: nanoid(),
   label,
   important: false,

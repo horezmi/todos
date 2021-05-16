@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import useInputValue from 'helpers/Hooks/useInputValue';
 
 import './index.scss';
+import { SearchPanelPropsType } from 'types/interfaces';
 
-const SearchPanel = ({ onSearch }: any) => {
+const SearchPanel = ({ onSearch }: SearchPanelPropsType) => {
   const { bindValue } = useInputValue('');
 
   const { value } = bindValue;

@@ -2,10 +2,11 @@ import React, { useState, useContext } from 'react';
 import Context from 'helpers/Context';
 import cn from 'classnames';
 import useInputValue from 'helpers/Hooks/useInputValue';
+import { TodosType } from 'types/interfaces';
 
 import './index.scss';
 
-const TodoListItem = ({ label, id, important, done }: any) => {
+const TodoListItem = ({ label, id, important, done }: TodosType) => {
   const { handleDeleteItem, onToggleImportant, onToggleDone, handleEditItem } = useContext(Context);
 
   const [isEdit, setIsEdit] = useState(false);

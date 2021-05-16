@@ -5,20 +5,20 @@ export interface TodosType {
   done: boolean;
 }
 
-export interface ItemStatusCountersType {
+export interface ItemStatusCountersPropsType {
   doneCount: number;
   activeCount: number;
 }
 
-export interface SearchPanelType {
+export interface SearchPanelPropsType {
   onSearch: (item: string) => void;
 }
 
-export interface FilterButtonsType {
-  onFilter: (todos: TodosType[], item: string) => TodosType[],
+export interface FilterButtonsPropsType {
+  onFilter: (item: string) => void,
 }
 
-export interface TodoListItemFormType {
+export interface TodoListItemFormPropsType {
   onCreate: (title: string) => void,
 }
 

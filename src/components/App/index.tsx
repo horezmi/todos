@@ -46,17 +46,17 @@ const App: FC = () => {
     });
     setTodos(updated);
   };
-  const search = (todos: TodosType[], label: string) => {
-    if (!label) return todos;
+  const search = (todos: TodosType[], searchLabel: string) => {
+    if (!searchLabel) return todos;
 
     return todos.filter(
-      ({ label }) => label.toLowerCase().indexOf(label.toLowerCase()) > -1
+      ({ label }) => label.toLowerCase().indexOf(searchLabel.toLowerCase()) > -1
     );
   };
   const handleSearch = (item: string) => {
     setSearchItem(item);
   };
-  const filter = (todos: TodosType[], item: string) => {
+  const filter = (todos: TodosType[], item: string):TodosType[] => {
     if (item === 'All') return todos;
     if (item === 'Active') {
       return todos.filter((todo) => !todo.done);
@@ -69,7 +69,7 @@ const App: FC = () => {
   const handleFilter = (item: string) => {
     setFilterItem(item);
   };
-  const showTodos = () => {
+  const showTodos = (): JSX.Element => {
     const visibleTodos = filter(search(todos, searchItem), filterItem);
     return visibleTodos.length > 0 ? (
       <TodoList todos={visibleTodos} />
@@ -85,9 +85,9 @@ const App: FC = () => {
     setTodos(updated);
   };
 
-  const visibleT = filter(search(todos, searchItem), filterItem);
-  const doneCount = visibleT.filter((todo) => todo.done).length;
-  const activeCount = visibleT.length - doneCount;
+  const visibleT: TodosType[] = filter(search(todos, searchItem), filterItem);
+  const doneCount: number = visibleT.filter((todo) => todo.done).length;
+  const activeCount: number = visibleT.length - doneCount;
 
   return (
     <todosAppContext.Provider

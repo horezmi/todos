@@ -1,10 +1,11 @@
 import React from 'react';
 import { TodoListItem } from 'components';
+import { TodosType } from 'types/interfaces';
 
 import './index.scss';
 
-const TodoList = ({ todos }: any) => {
-  const lists: any = todos.map((todo: any) => (
+const TodoList = ({ todos }: {todos: TodosType[]}) => {
+  const lists = todos.map((todo) => (
     <li key={`id${todo.id}`} className="list-group-item todo-list__li">
       <TodoListItem {...todo} />
     </li>

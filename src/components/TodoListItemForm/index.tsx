@@ -1,9 +1,10 @@
 import React from 'react';
 import useInputValue from 'helpers/Hooks/useInputValue';
+import { TodoListItemFormPropsType } from 'types/interfaces';
 
 import './index.scss';
 
-const TodoListItemForm = ({ onCreate }: any) => {
+const TodoListItemForm = ({ onCreate }: TodoListItemFormPropsType) => {
   const { bindValue, clearValue } = useInputValue('');
 
   const onSubmit = (event: any) => {
